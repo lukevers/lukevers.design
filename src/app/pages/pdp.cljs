@@ -1,19 +1,22 @@
 (ns app.pages.pdp
-  (:require [reagent.core :as r]
-            [reagent.session :as session]))
+  (:require [reagent.core :as reagent]
+            [reagent.session :as session]
+            [app.util.api :refer [fetch]]))
 
-(defn click-counter [click-count]
-  [:div
-   "The atom " [:code "click-count"] " has value: "
-   @click-count ". "
-   [:input {:type "button" :value "Click me!"
-            :on-click #(swap! click-count inc)}]])
-
-(def click-count (r/atom 0))
+(defn reduce-data [data]
+  {:name (get-in data [:name])})
 
 (defn page-pdp []
-  (js/console.log (str "Product: " (session/get :product)))
-  [:<>
-   [:p "Hello, lukevers.design is running!"]
-   [:p "Here's an example of using a component with state:"]
-   [click-counter click-count]])
+  (let [state (reagent/atom {})]
+    (reagent/create-class
+     {:component-did-mount
+      (fn []
+        (fetch
+         (str "/data/" (session/get :product) ".json")
+         (fn [data] (reset! state (reduce-data data)))))
+
+      :reagent-render
+      (fn []
+        [:<>
+         [:div "yo"]
+         [:h3 (get-in @state [:name])]])})))
