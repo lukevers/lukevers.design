@@ -1,0 +1,7 @@
+(fp_lib_table
+  (lib (name MX_Alps_Hybrid)(type KiCad)(uri ${KIPRJMOD}/vendor/MX_Alps_Hybrid/MX_Alps_Hybrid.pretty)(options "")(descr ""))
+  (lib (name random-keyboard-parts)(type KiCad)(uri ${KIPRJMOD}/vendor/random-keyboard-parts.pretty)(options "")(descr ""))
+  (lib (name Fuse_Holders_and_Fuses)(type KiCad)(uri ${KIPRJMOD}/vendor/Fuse_Holders_and_Fuses.pretty)(options "")(descr ""))
+  (lib (name Housings_QFP)(type KiCad)(uri ${KIPRJMOD}/vendor/Housings_QFP.pretty)(options "")(descr ""))
+  (lib (name usb-type-c)(type KiCad)(uri ${KIPRJMOD}/vendor/usb-type-c.pretty)(options "")(descr ""))
+)
