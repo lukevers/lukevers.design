@@ -40,6 +40,9 @@ func main() {
 					w.Header().Set("Content-Type", "application/json")
 					w.Write(manifest.JSON())
 					return
+				} else if !ok {
+					w.WriteHeader(http.StatusNotFound)
+					return
 				}
 			}
 

@@ -3,5 +3,5 @@
 
 (defn page-home []
   [:<>
-   [:p "Hello, lukevers.design is running!"]
-   [:a {:href "/p/monstera"} "about page"]])
+   [:p "Hello, app is running!"]
+   [:a {:href "/projects/monstera"} "about page"]])
