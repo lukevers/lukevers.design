@@ -3,5 +3,4 @@
 
 (defn page-not-found []
   [:<>
-   [:p "Page not found!"]
-   [:a {:href "/p/monstera"} "about page"]])
+   [:p "Page not found!"]])

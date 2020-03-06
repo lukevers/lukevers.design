@@ -1,24 +1,26 @@
 (ns app.pages.pdp
+  "PDP"
   (:require [reagent.core :as reagent]
             [reagent.session :as session]
             [app.util.api :refer [fetch]]
             [app.pages.error-404 :refer [page-not-found]]
             [app.pages.error :refer [page-error]]))
 
+;; PDP data reducer
 (defn reduce-data [data]
   {:error (get-in data [:error])
    :name (get-in data [:name])})
 
+;; Rendered page while loading.
+(defn loading [state] ())
 
-(defn loading [state]
-  [:<>
-   [:div "loading..."]])
-
+;; Rendered page after load+success
 (defn page [state]
   [:<>
    [:div "yo"]
    [:h3 (get-in @state [:name])]])
 
+;; Conditional rendering based on state
 (defn page-pdp []
   (let [state (reagent/atom {:loading true})]
     (reagent/create-class
