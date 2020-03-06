@@ -10,6 +10,6 @@
 (secretary/defroute "/" []
   (session/put! :current-page page-home))
 
-(secretary/defroute "/p/:product" [product]
+(secretary/defroute "/projects/:product" [product]
   (session/put! :product product)
   (session/put! :current-page page-pdp))

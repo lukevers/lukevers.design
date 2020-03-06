@@ -27,7 +27,7 @@
      {:component-did-mount
       (fn []
         (fetch
-         (str "/data/" (session/get :product) ".json")
+         (str "/projects/" (session/get :product) ".json")
          (fn [data] (reset! state (reduce-data data)))
          (fn [details]
            (if (= (get-in details [:status]) 404)
