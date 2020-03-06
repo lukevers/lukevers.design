@@ -1,6 +1,12 @@
+# macOS
 .DS_Store
+
+# cljs
 public/js
 node_modules
 .shadow-cljs
 .nrepl-port
 .clj-kondo/.cache
+
+# go
+lukevers.design
