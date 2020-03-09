@@ -12,6 +12,7 @@
   {:error (get-in data [:error])
    :name (get-in data [:name])
    :type (get-in data [:type])
+   :description (get-in data [:description])
    :breadcrumbs (get-in data [:breadcrumbs])})
 
 ;; Rendered page while loading.
@@ -21,11 +22,11 @@
 (defn page [state]
   [:div.container
    [:div.product
-    (breadcrumbs (get-in @state [:breadcrumbs]))
     [:img {:src "https://placehold.co/500x500"}]]
    [:div.details
     [:h1 (get-in @state [:name])]
-    [:h2 (get-in @state [:type])]]])
+    (breadcrumbs (get-in @state [:breadcrumbs]))
+    [:p (get-in @state [:description])]]])
 
 ;; Conditional rendering based on state
 (defn page-pdp []

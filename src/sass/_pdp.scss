@@ -13,7 +13,7 @@
 
     .details {
         width: 400px;
-        padding: 1em;
+        padding: 0 1em;
 
         @media screen and ($breakpoint-tablet) {
             width: 300px;
@@ -26,6 +26,14 @@
 
         h1 {
             margin: 0;
+            text-transform: uppercase;
+            color: $color-primary;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        p {
+            line-height: 1.5em;
         }
     }
 }

@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "cljs:start": "shadow-cljs watch app",
     "cljs:build": "shadow-cljs release app",
+    "cljs:watch": "shadow-cljs watch app",
     "cljs:lint": "clj-kondo --lint src/app",
     "sass:build": "node-sass --output-style compressed src/sass/style.scss > public/css/style.css",
     "sass:watch": "node-sass --watch --recursive --output public/css/ src/sass/style.scss"

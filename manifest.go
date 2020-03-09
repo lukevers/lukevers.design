@@ -16,6 +16,7 @@ var Manifests = make(map[string]Manifest)
 type Manifest struct {
 	Name        string   `json:"name"`
 	Type        string   `json:"type"`
+	Description string   `json:"description"`
 	Breadcrumbs []string `json:"breadcrumbs"`
 	Related     []string `json:"related"`
 }
