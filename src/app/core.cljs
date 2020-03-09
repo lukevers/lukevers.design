@@ -19,11 +19,10 @@
     
     (events/listen js/document "click"
       (fn [e]
-        (. e preventDefault)
         (let [path (.getPath (.parse Uri (.-href (.-target e))))
               title (.-title (.-target e))]
           (when (secretary/locate-route path)
-            (. history (setToken path title))))))))
+            ((. e preventDefault) (. history (setToken path title)))))))))
 
 (hook-browser-navigation!)
 
