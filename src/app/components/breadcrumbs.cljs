@@ -2,7 +2,7 @@
   "Breadcrumbs")
 
 (defn breadcrumb [item]
-  [:li
+  [:li {:key item}
    [:a {:href (str "/" item)} item]])
 
 (defn breadcrumbs [items]
