@@ -3,6 +3,7 @@
   (:require [reagent.core :as reagent]
             [reagent.session :as session]
             [app.components.breadcrumbs :refer [breadcrumbs]]
+            [app.components.button :refer [button]]
             [app.pages.error-404 :refer [page-not-found]]
             [app.pages.error :refer [page-error]]
             [app.util.api :refer [fetch]]))
@@ -26,7 +27,8 @@
    [:div.details
     [:h1 (get-in @state [:name])]
     (breadcrumbs (get-in @state [:breadcrumbs]))
-    [:p (get-in @state [:description])]]])
+    [:p (get-in @state [:description])]
+    (button "Add To Cart" nil (fn [] (js/console.log "clicked")))]])
 
 ;; Conditional rendering based on state
 (defn page-pdp []

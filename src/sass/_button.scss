@@ -1,0 +1,17 @@
+button {
+    background: $color-secondary;
+    border: 0;
+    cursor: pointer;
+
+    &:hover {
+        background: $color-primary;
+    }
+
+    a {
+        color: $color-white;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: block;
+        padding: 1em;
+    }    
+}

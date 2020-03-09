@@ -8,13 +8,15 @@ $breakpoint-mobile: (max-width: 725px);
 
 // Colors
 $color-primary: #E66A6A;
-$color-secondary: #27AB83;
+$color-secondary: #F29B9B;
 
 $color-black: #102A43;
 $color-gray: #CCCCCC;
+$color-white: #FFFFFF;
 
 // Import local
 @import "breadcrumbs";
+@import "button";
 @import "nav";
 @import "pdp";
 
@@ -32,6 +34,7 @@ body,
 
 a {
     color: $color-secondary;
+    text-decoration: none;
 }
 
 img {
