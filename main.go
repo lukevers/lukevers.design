@@ -38,7 +38,31 @@ func main() {
 			if strings.Contains(p, "/projects") && strings.HasSuffix(file, ".json") {
 				if manifest, ok := Manifests[file[0:len(file)-5]]; ok {
 					w.Header().Set("Content-Type", "application/json")
-					w.Write(manifest.JSON())
+					w.Write(JSON(manifest))
+					return
+				} else if !ok {
+					w.WriteHeader(http.StatusNotFound)
+					return
+				}
+			}
+
+			// Serve the manifest JSON for tags where applicable
+			if strings.Contains(p, "/tags") && strings.HasSuffix(file, ".json") {
+				if manifests, ok := IndexTags[file[0:len(file)-5]]; ok {
+					w.Header().Set("Content-Type", "application/json")
+					w.Write(JSON(manifests))
+					return
+				} else if !ok {
+					w.WriteHeader(http.StatusNotFound)
+					return
+				}
+			}
+
+			// Serve the manifest JSON for collections where applicable
+			if strings.Contains(p, "/collections") && strings.HasSuffix(file, ".json") {
+				if manifests, ok := IndexCollections[file[0:len(file)-5]]; ok {
+					w.Header().Set("Content-Type", "application/json")
+					w.Write(JSON(manifests))
 					return
 				} else if !ok {
 					w.WriteHeader(http.StatusNotFound)
@@ -96,7 +120,19 @@ func indexProjects() error {
 			return err
 		}
 
+		// Add to global manifests
 		Manifests[manifest.URL()] = manifest
+
+		// Index manifests by tags & breadcrumbs
+		tags := append(manifest.Tags, manifest.Breadcrumbs...)
+		for _, tag := range tags {
+			IndexTags[tag] = append(IndexTags[tag], manifest)
+		}
+
+		// Index manifests by collection
+		for _, collection := range manifest.Collections {
+			IndexCollections[collection] = append(IndexCollections[collection], manifest)
+		}
 	}
 
 	return nil

@@ -1,5 +1,5 @@
-(ns app.pages.pdp
-  "PDP"
+(ns app.pages.pcp
+  "PCP"
   (:require [reagent.core :as reagent]
             [reagent.session :as session]
             [app.components.breadcrumbs :refer [breadcrumbs]]
@@ -8,7 +8,7 @@
             [app.pages.error :refer [page-error]]
             [app.util.api :refer [fetch]]))
 
-;; PDP data reducer
+;; PCP data reducer
 (defn reduce-data [data]
   {:error (get-in data [:error])
    :name (get-in data [:name])
@@ -21,29 +21,20 @@
 
 ;; Rendered page after load+success
 (defn page [state]
-  [:div.container
-   [:div.product
-    [:img {:src "https://placehold.co/500x500"}]]
-   [:div.details
-    [:div.wrap
-     [:h1 (get-in @state [:name])]
-     (breadcrumbs (get-in @state [:breadcrumbs]) "/tags/")
-     [:p (get-in @state [:description])]
-     (button "Add To Cart" nil (fn [] (js/console.log "clicked")))]]])
+  [:h1 "TO"])
 
 ;; Conditional rendering based on state
-(defn page-pdp []
+(defn page-pcp []
   (let [state (reagent/atom {:loading true})]
     (reagent/create-class
      {:component-did-mount
       (fn []
         (fetch
-         (str "/projects/" (session/get :product) ".json")
+         (str "/" (session/get :collection-type) "/" (session/get :collection) ".json")
          (fn [data] (reset! state (reduce-data data)))
          (fn [details]
            (if (= (get-in details [:status]) 404)
-             (reset! state (reduce-data {:error 404})) ()
-             ))))
+             (reset! state (reduce-data {:error 404})) ()))))
 
       :reagent-render
       (fn []

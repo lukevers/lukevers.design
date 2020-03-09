@@ -1,10 +1,16 @@
 {
     "name": "Monstera",
     "type": "Mechanical Keyboard",
+    "description": "Description tbd",
     "breadcrumbs": [
         "keyboards"
     ],
     "related": [
         "monstera-pcb"
-    ]
+    ],
+    "tags": [],
+    "collections": [
+        "monstera"
+    ],
+    "homepage": true
 }

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"strings"
 )
@@ -11,6 +10,12 @@ import (
 // the second parameter is the type, and both parameters are sluggified.
 var Manifests = make(map[string]Manifest)
 
+// ...
+var IndexTags = make(map[string][]Manifest)
+
+// ...
+var IndexCollections = make(map[string][]Manifest)
+
 // Manifest is the object structure of what to expect for each project
 // manifest JSON file.
 type Manifest struct {
@@ -18,7 +23,10 @@ type Manifest struct {
 	Type        string   `json:"type"`
 	Description string   `json:"description"`
 	Breadcrumbs []string `json:"breadcrumbs"`
+	Tags        []string `json:"tags"`
 	Related     []string `json:"related"`
+	Collections []string `json:"collections"`
+	Homepage    bool     `json:"homepage"`
 }
 
 // URL generates the slug-like key for the manifest.
@@ -32,14 +40,4 @@ func (m Manifest) URL() string {
 		" ",
 		"-",
 	)
-}
-
-// JSON converts the manifest from an object to JSON.
-func (m Manifest) JSON() []byte {
-	contents, err := json.Marshal(m)
-	if err != nil {
-		return []byte(`{"error": "internal server error"}`)
-	}
-
-	return contents
 }
