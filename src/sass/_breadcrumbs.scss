@@ -1,0 +1,16 @@
+ul.breadcrumbs {
+    li {
+        display: inline-block;
+        text-transform: uppercase;
+
+        a {
+            padding: .25em .5em;
+            display: block;
+            text-decoration: none;
+        }
+
+        &:first-child a {
+            padding: .25em 0;
+        }
+    }
+}

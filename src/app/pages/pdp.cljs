@@ -2,23 +2,30 @@
   "PDP"
   (:require [reagent.core :as reagent]
             [reagent.session :as session]
-            [app.util.api :refer [fetch]]
+            [app.components.breadcrumbs :refer [breadcrumbs]]
             [app.pages.error-404 :refer [page-not-found]]
-            [app.pages.error :refer [page-error]]))
+            [app.pages.error :refer [page-error]]
+            [app.util.api :refer [fetch]]))
 
 ;; PDP data reducer
 (defn reduce-data [data]
   {:error (get-in data [:error])
-   :name (get-in data [:name])})
+   :name (get-in data [:name])
+   :type (get-in data [:type])
+   :breadcrumbs (get-in data [:breadcrumbs])})
 
 ;; Rendered page while loading.
 (defn loading [state] ())
 
 ;; Rendered page after load+success
 (defn page [state]
-  [:<>
-   [:div "yo"]
-   [:h3 (get-in @state [:name])]])
+  [:div.container
+   [:div.product
+    (breadcrumbs (get-in @state [:breadcrumbs]))
+    [:img {:src "https://placehold.co/500x500"}]]
+   [:div.details
+    [:h1 (get-in @state [:name])]
+    [:h2 (get-in @state [:type])]]])
 
 ;; Conditional rendering based on state
 (defn page-pdp []
@@ -31,7 +38,7 @@
          (fn [data] (reset! state (reduce-data data)))
          (fn [details]
            (if (= (get-in details [:status]) 404)
-             (reset! state (reduce-data {:error 404})) "b"
+             (reset! state (reduce-data {:error 404})) ()
              ))))
 
       :reagent-render

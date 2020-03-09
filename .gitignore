@@ -11,6 +11,9 @@ node_modules
 # go
 lukevers.design
 
+# scss/css
+public/css/*.css
+
 # kicad
 *.000
 *.bak

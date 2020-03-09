@@ -5,7 +5,7 @@
             [app.pages.pdp :refer [page-pdp]]))
 
 (defn current-page []
-  [:div [(session/get :current-page)]])
+  [(session/get :current-page)])
 
 (secretary/defroute "/" []
   (session/put! :current-page page-home))

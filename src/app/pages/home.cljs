@@ -4,4 +4,4 @@
 (defn page-home []
   [:<>
    [:p "Hello, app is running!"]
-   [:a {:href "/projects/monstera"} "about page"]])
+   [:a {:href "/projects/monstera-pcb"} "Monstera PCB"]])
