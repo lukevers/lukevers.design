@@ -22,6 +22,10 @@
         @media screen and ($breakpoint-mobile) {
             width: 100%;
             padding: 0;
+
+            .wrap {
+                padding: 1em;
+            }
         }
 
         h1 {
@@ -34,6 +38,10 @@
 
         p {
             line-height: 1.5em;
+        }
+
+        button {
+            margin-top: 1em;
         }
     }
 }

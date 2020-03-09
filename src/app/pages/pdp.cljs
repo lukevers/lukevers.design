@@ -25,10 +25,11 @@
    [:div.product
     [:img {:src "https://placehold.co/500x500"}]]
    [:div.details
-    [:h1 (get-in @state [:name])]
-    (breadcrumbs (get-in @state [:breadcrumbs]))
-    [:p (get-in @state [:description])]
-    (button "Add To Cart" nil (fn [] (js/console.log "clicked")))]])
+    [:div.wrap
+     [:h1 (get-in @state [:name])]
+     (breadcrumbs (get-in @state [:breadcrumbs]))
+     [:p (get-in @state [:description])]
+     (button "Add To Cart" nil (fn [] (js/console.log "clicked")))]]])
 
 ;; Conditional rendering based on state
 (defn page-pdp []
