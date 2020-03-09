@@ -1,4 +1,11 @@
 {
-    "name": "Monstera PCB",
-    "type": "PCB"
+    "name": "Monstera",
+    "type": "PCB",
+    "breadcrumbs": [
+        "keyboards",
+        "pcb"
+    ],
+    "related": [
+        "monstera-mechanical-keyboard"
+    ]
 }

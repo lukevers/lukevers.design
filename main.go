@@ -59,7 +59,8 @@ func main() {
 		})
 	})
 
-	log.Fatal(http.ListenAndServe(":3333", r))
+	log.Println("Starting server")
+	log.Fatal(http.ListenAndServe(":3030", r))
 }
 
 // The function indexProjects loops through every project in the repository,
@@ -71,6 +72,7 @@ func indexProjects() error {
 		return err
 	}
 
+	// ...
 	for _, file := range files {
 		if !file.IsDir() {
 			continue

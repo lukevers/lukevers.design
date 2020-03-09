@@ -14,8 +14,10 @@ var Manifests = make(map[string]Manifest)
 // Manifest is the object structure of what to expect for each project
 // manifest JSON file.
 type Manifest struct {
-	Name string `json:"name"`
-	Type string `json:"type"`
+	Name        string   `json:"name"`
+	Type        string   `json:"type"`
+	Breadcrumbs []string `json:"breadcrumbs"`
+	Related     []string `json:"related"`
 }
 
 // URL generates the slug-like key for the manifest.
