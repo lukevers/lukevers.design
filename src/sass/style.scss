@@ -2,8 +2,13 @@
 @import "../../node_modules/reset-css/sass/reset";
 @import "../../node_modules/normalize.css/normalize";
 
+// Breakpoints
+$breakpoint-tablet: (max-width: 925px);
+$breakpoint-mobile: (max-width: 725px);
+
 // Import local
 @import "breadcrumbs";
+@import "nav";
 @import "pdp";
 
 // Global/general styles & classes
@@ -27,11 +32,11 @@ img {
     display: flex;
     flex-direction: row;
 
-    @media screen and (max-width: 925px) {
+    @media screen and ($breakpoint-tablet) {
         max-width: 700px;
     }
 
-    @media screen and (max-width: 725px) {
+    @media screen and ($breakpoint-mobile) {
         max-width: 100%;
         flex-direction: column;
     }

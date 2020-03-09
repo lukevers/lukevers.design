@@ -2,11 +2,11 @@
     .product {
         width: 500px;
 
-        @media screen and (max-width: 925px) {
+        @media screen and ($breakpoint-tablet) {
             width: 400px;
         }
 
-        @media screen and (max-width: 725px) {
+        @media screen and ($breakpoint-mobile) {
             width: 100%;
         }
     }
@@ -15,8 +15,13 @@
         width: 400px;
         padding: 1em;
 
-        @media screen and (max-width: 925px) {
+        @media screen and ($breakpoint-tablet) {
             width: 300px;
+        }
+
+        @media screen and ($breakpoint-mobile) {
+            width: 100%;
+            padding: 0;
         }
 
         h1 {
