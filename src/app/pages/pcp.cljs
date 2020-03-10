@@ -2,8 +2,7 @@
   "PCP"
   (:require [reagent.core :as reagent]
             [reagent.session :as session]
-            [app.components.breadcrumbs :refer [breadcrumbs]]
-            [app.components.button :refer [button]]
+            [app.components.card :refer [card]]
             [app.pages.error-404 :refer [page-not-found]]
             [app.pages.error :refer [page-error]]
             [app.util.api :refer [fetch]]))
@@ -16,12 +15,24 @@
    :description (get-in data [:description])
    :breadcrumbs (get-in data [:breadcrumbs])})
 
+(defn get-link [c]
+  (.toLowerCase
+   (.replace
+    (str "/projects/"
+         (get-in c [:name]) "-"
+         (get-in c [:type])) " " "-")))
+
 ;; Rendered page while loading.
 (defn loading [state] ())
 
 ;; Rendered page after load+success
 (defn page [state]
-  [:h1 "TO"])
+  [:div.container
+   [:div.cards
+    (map (fn [c]
+           (card (get-in c [:name])
+                 (get-in c [:type])
+                 (get-link c))) @state)]])
 
 ;; Conditional rendering based on state
 (defn page-pcp []
@@ -31,7 +42,7 @@
       (fn []
         (fetch
          (str "/" (session/get :collection-type) "/" (session/get :collection) ".json")
-         (fn [data] (reset! state (reduce-data data)))
+         (fn [data] (reset! state (map reduce-data data)))
          (fn [details]
            (if (= (get-in details [:status]) 404)
              (reset! state (reduce-data {:error 404})) ()))))

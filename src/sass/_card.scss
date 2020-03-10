@@ -1,0 +1,36 @@
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+
+    @media screen and ($breakpoint-tablet) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and ($breakpoint-mobile) {
+        padding: 0 1em;
+    }
+}
+
+.card {
+    cursor: pointer;
+
+    img {
+        display: block;
+    }
+
+    h4 {
+        margin: 0;
+        text-transform: uppercase;
+        color: $color-primary;
+        font-weight: 600;
+        letter-spacing: 2px;
+        line-height: 1.25em;
+    }
+
+    .wrap {
+        padding: 1em;
+        border: 1px solid $color-gray;
+        border-top: 0;
+    }
+}
