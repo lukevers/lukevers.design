@@ -2,7 +2,9 @@
 
 # lukevers.design
 
-TBD
+There isn't a ton here right now. Feel free to poke around, but best to come back later.
+
+✨
 
 ## Project Structure
 
