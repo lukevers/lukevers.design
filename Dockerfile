@@ -13,6 +13,7 @@ RUN apt install -y nodejs openjdk-11-jdk
 # Build app dependencies
 RUN npm install
 RUN npm run cljs:build
+RUN npm install -g node-sass
 RUN npm run sass:build
 
 # Install app
