@@ -7,6 +7,6 @@ ADD . /app
 
 # Install
 RUN go get
-RUN go build
+RUN go build -o app
 
-CMD app
+CMD ./app
