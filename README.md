@@ -1,6 +1,8 @@
+<p align="center"><img src="./public/favicon-256.png" alt="lukevers.design logo" title="lukevers.design logo"/></p>
+
 # lukevers.design
 
-tbd
+TBD
 
 ## Project Structure
 
