@@ -7,6 +7,11 @@
   (:import goog.history.Html5History
            goog.Uri))
 
+(defn findParentLink [element]
+  (if (or (= element nil) (= (.toUpperCase (.-tagName element)) "A"))
+    element
+    (findParentLink (.-parentNode element))))
+
 (defn hook-browser-navigation! []
   (let [history (doto (Html5History.)
                   (events/listen
@@ -19,10 +24,13 @@
     
     (events/listen js/document "click"
       (fn [e]
-        (let [path (.getPath (.parse Uri (.-href (.-target e))))
-              title (.-title (.-target e))]
-          (when (secretary/locate-route path)
-            ((. e preventDefault) (. history (setToken path title)))))))))
+        (try
+          (let [target (findParentLink (.-target e))
+                path (.getPath (.parse Uri (.-href target)))
+                title (.-title (.-target target))]
+            (when (secretary/locate-route path)
+              ((. e preventDefault) (. history (setToken path title)))))
+          (catch js/Object _ nil))))))
 
 (hook-browser-navigation!)
 
