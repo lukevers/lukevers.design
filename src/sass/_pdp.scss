@@ -34,7 +34,13 @@
             color: $color-primary;
             font-weight: 600;
             letter-spacing: 2px;
-            line-height: 1.25em;
+            display: flex;
+
+            span {
+                font-size: .5em;
+                padding: 0 .5em;
+                color: $color-secondary;
+            }
         }
 
         p {
@@ -42,7 +48,12 @@
         }
 
         button {
-            margin-top: 1em;
+            margin: 1em 0;
+        }
+
+        .collections {
+            font-size: .5em;
+            margin-bottom: 1em;
         }
     }
 }

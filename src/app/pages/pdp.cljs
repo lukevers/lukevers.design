@@ -14,7 +14,8 @@
    :name (get-in data [:name])
    :type (get-in data [:type])
    :description (get-in data [:description])
-   :breadcrumbs (get-in data [:breadcrumbs])})
+   :breadcrumbs (get-in data [:breadcrumbs])
+   :collections (get-in data [:collections])})
 
 ;; Rendered page while loading.
 (defn loading [state] ())
@@ -26,8 +27,12 @@
     [:img {:src "https://placehold.co/500x500"}]]
    [:div.details
     [:div.wrap
-     [:h1 (get-in @state [:name])]
+     [:h1 (get-in @state [:name]) [:span (get-in @state [:type])]]
      (breadcrumbs (get-in @state [:breadcrumbs]) "/tags/")
+     [:ul.collections
+      (map (fn [collection]
+             [:a {:key collection :href (str "/collections/" collection)}
+              [:li.pill (str "THE " collection " COLLECTION")]]) (get-in @state [:collections]))]
      [:p (get-in @state [:description])]
      (button "Add To Cart" nil (fn [] (js/console.log "clicked")))]]])
 
