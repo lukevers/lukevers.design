@@ -15,7 +15,8 @@
    :type (get-in data [:type])
    :description (get-in data [:description])
    :breadcrumbs (get-in data [:breadcrumbs])
-   :collections (get-in data [:collections])})
+   :collections (get-in data [:collections])
+   :salable (get-in data [:salable])})
 
 ;; Rendered page while loading.
 (defn loading [state] ())
@@ -34,7 +35,8 @@
              [:a {:key collection :href (str "/collections/" collection)}
               [:li.pill (str "THE " collection " COLLECTION")]]) (get-in @state [:collections]))]
      [:p (get-in @state [:description])]
-     (button "Add To Cart" nil (fn [] (js/console.log "clicked")))]]])
+     (when (get-in @state [:salable])
+       (button "Add To Cart" nil (fn [] (js/console.log "clicked"))))]]])
 
 ;; Conditional rendering based on state
 (defn page-pdp []

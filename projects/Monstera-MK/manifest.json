@@ -12,5 +12,6 @@
     "collections": [
         "monstera"
     ],
-    "homepage": true
+    "homepage": true,
+    "salable": false
 }

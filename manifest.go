@@ -27,6 +27,7 @@ type Manifest struct {
 	Related     []string `json:"related"`
 	Collections []string `json:"collections"`
 	Homepage    bool     `json:"homepage"`
+	Salable     bool     `json:"salable"`
 }
 
 // URL generates the slug-like key for the manifest.
