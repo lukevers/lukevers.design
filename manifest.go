@@ -16,6 +16,9 @@ var IndexTags = make(map[string][]Manifest)
 // ...
 var IndexCollections = make(map[string][]Manifest)
 
+// ...
+var HomepageKeys []string
+
 // Manifest is the object structure of what to expect for each project
 // manifest JSON file.
 type Manifest struct {
@@ -26,7 +29,6 @@ type Manifest struct {
 	Tags        []string `json:"tags"`
 	Related     []string `json:"related"`
 	Collections []string `json:"collections"`
-	Homepage    bool     `json:"homepage"`
 	Salable     bool     `json:"salable"`
 }
 

@@ -18,9 +18,14 @@ $color-white: #FFFFFF;
 @import "breadcrumbs";
 @import "button";
 @import "card";
+@import "collection";
 @import "nav";
 @import "pdp";
 @import "pill";
+
+* {
+    box-sizing: border-box !important;
+}
 
 // Global/general styles & classes
 html,
@@ -48,7 +53,7 @@ img {
     width: 100%;
     max-width: 900px;
     margin: auto;
-    padding: 2em 0;
+    padding: 2em 1em;
     display: flex;
     flex-direction: row;
 

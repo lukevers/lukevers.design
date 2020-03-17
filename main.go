@@ -70,6 +70,13 @@ func main() {
 				}
 			}
 
+			// Serve the manifest JSON for homepage
+			if strings.Contains(p, "/homepage") && strings.HasSuffix(file, ".json") {
+				w.Header().Set("Content-Type", "application/json")
+				w.Write(JSON(HomepageKeys))
+				return
+			}
+
 			// Serve files
 			if info, err := os.Stat(p); err != nil {
 				http.ServeFile(w, r, filepath.Join("public", "index.html"))
@@ -132,6 +139,18 @@ func indexProjects() error {
 		// Index manifests by collection
 		for _, collection := range manifest.Collections {
 			IndexCollections[collection] = append(IndexCollections[collection], manifest)
+
+			add := true
+			for _, c := range HomepageKeys {
+				if c == collection {
+					add = false
+					break
+				}
+			}
+
+			if add {
+				HomepageKeys = append(HomepageKeys, collection)
+			}
 		}
 	}
 
