@@ -127,6 +127,10 @@ func indexProjects() error {
 			return err
 		}
 
+		if !manifest.Visible {
+			continue
+		}
+
 		// Add to global manifests
 		Manifests[manifest.URL()] = manifest
 
