@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "clj-kondo": "2020.1.13",
-    "highlight.js": "9.18.0",
+    "highlight.js": "10.1.2",
     "jsdom": "^16.0.1",
     "jsdom-global": "^3.0.2",
     "marked": "^0.8.0",
